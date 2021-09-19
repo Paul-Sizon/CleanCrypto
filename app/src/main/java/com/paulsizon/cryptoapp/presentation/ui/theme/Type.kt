@@ -1,4 +1,4 @@
-package com.paulsizon.cryptoapp.ui.theme
+package com.paulsizon.cryptoapp.presentation.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
