@@ -15,13 +15,13 @@ import javax.inject.Inject
 class GetCoinsUseCase @Inject constructor(private val repository: CoinRepository ){
     operator fun invoke(): Flow<Resource<List<Coin>>> = flow {
         try {
-            emit(Resource.Loading())
-            val coins = repository.getCoins().map{it.toCoin()}
-            emit(Resource.Success(coins))
-        } catch (e: HttpException){
-            emit(Resource.Error(e.localizedMessage?: "An unexpected error occured"))
-        } catch (e: IOException) {
-            emit(Resource.Error(e.localizedMessage?: "Could not reach server, please check your connection"))
+            emit(Resource.Loading<List<Coin>>())
+            val coins = repository.getCoins().map { it.toCoin() }
+            emit(Resource.Success<List<Coin>>(coins))
+        } catch(e: HttpException) {
+            emit(Resource.Error<List<Coin>>(e.localizedMessage ?: "An unexpected error occured"))
+        } catch(e: IOException) {
+            emit(Resource.Error<List<Coin>>("Couldn't reach server. Check your internet connection."))
         }
     }
 }

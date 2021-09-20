@@ -6,7 +6,7 @@ import com.paulsizon.cryptoapp.data.remote.dto.CoinDto
 import com.paulsizon.cryptoapp.domain.repository.CoinRepository
 import javax.inject.Inject
 
-class CoinRepositoryImplementation @Inject constructor(private val api: CoinPaprikaApi):CoinRepository {
+class CoinRepositoryImpl @Inject constructor(private val api: CoinPaprikaApi):CoinRepository {
     override suspend fun getCoins(): List<CoinDto> {
         return api.getCoins()
     }
